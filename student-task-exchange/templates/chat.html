@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Chat Room 💬</h2>
+
+<form method="POST">
+    <input type="text" name="message" placeholder="Type message..." required>
+    <button type="submit">Send</button>
+</form>
+
+<hr>
+
+<div>
+{% for msg in messages %}
+    <div class="task-card">
+        <b>{{ msg['user_name'] }}</b>
+        <p>{{ msg['message'] }}</p>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

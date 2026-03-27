@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Chat with {{ username }}</h2>
+
+<form method="POST" action="{{ url_for('private_chat', task_id=request.view_args['task_id'], username=username) }}">
+    <input type="text" name="message" placeholder="Type message..." required>
+    <button type="submit">Send</button>
+</form>
+
+<hr>
+
+{% for msg in messages %}
+    <div class="task-card">
+        <b>{{ msg['sender'] }}</b>
+        <p>{{ msg['message'] }}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}

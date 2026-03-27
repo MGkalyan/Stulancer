@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Task Exchange</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+<meta name="theme-color" content="#38bdf8">
+</head>
+<body>
+
+    <!-- Navbar -->
+   <nav>
+    <h2>Stulancer</h2>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <!-- Menu Links -->
+    <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/tasks">Tasks</a>
+        <a href="/post_task">Post Task</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/my_applications">My Applications</a>
+
+        {% if session.get('user') %}
+            <span>👤 {{ session['user'] }}</span>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</nav>
+    <!-- Page Content -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script>
+function toggleMenu() {
+    var menu = document.getElementById("navLinks");
+    menu.classList.toggle("active");
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/static/service-worker.js');
+}
+</script>
+</body>
+</html>

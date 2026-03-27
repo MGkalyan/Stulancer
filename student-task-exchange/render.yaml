@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: student-task-exchange
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app

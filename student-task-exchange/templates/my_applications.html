@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Applications</h2>
+
+{% for app in applications %}
+    {% for task in tasks %}
+        {% if task['id'] == app['task_id'] %}
+            <div class="task-card">
+                <h3>{{ task['title'] }}</h3>
+                <p>{{ task['description'] }}</p>
+
+                <a href="{{ url_for('private_chat', task_id=task['id'], username=task['user_id']) }}">
+                    <button>Chat with Owner</button>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>🚀 Stulancer--> Pay and get your work completed.</h1>
+<p>Post assignments. Earn money. Help students.</p>
+
+<br>
+
+<a href="/post_task"><button>Post Task</button></a>
+<a href="/tasks"><button>Browse Tasks</button></a>
+
+<br><br>
+
+{% if session.get('user') %}
+    <h3>Welcome back, {{ session['user'] }} 👋</h3>
+{% else %}
+    <p>Please login to start using features.</p>
+{% endif %}
+
+{% endblock %}

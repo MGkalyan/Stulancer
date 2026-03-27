@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>All Tasks</h2>
+
+{% for task in tasks %}
+    <div class="task-card">
+    <h3>{{ task['title'] }}</h3>
+    <p>{{ task['description'] }}</p>
+    <p><b>Deadline:</b> {{ task['deadline'] }}</p>
+    <p><b>Budget:</b> {{ task['budget'] }}</p>
+
+    <a href="/apply/{{ task['id'] }}">
+        <button>Apply</button>
+    </a>
+</div>
+{% endfor %}
+
+{% endblock %}
